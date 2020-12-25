@@ -3,9 +3,8 @@
         <a href="#home" class="w3-bar-item w3-button w3-hover-white"><img src="view/img/logo.png" class="logo"></a>
         <!-- Float links to the right. Hide them on small screens -->
         <div class="w3-right w3-hide-small">
-            <a href="" class="w3-bar-item w3-button active w3-text-blue">HOME</a>
-            <a href="" class="w3-bar-item w3-button">DATA</a>
-            <a href="" class="w3-bar-item w3-button w3-blue w3-round">ADMIN</a>
+            <a href="home" class="w3-bar-item w3-button active w3-text-blue">HOME</a>
+            <a href="data" class="w3-bar-item w3-button">DATA</a>
         </div>
     </div>
 </div>
