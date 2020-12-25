@@ -5,7 +5,7 @@
         <div class="w3-right w3-hide-small">
             <a href="" class="w3-bar-item w3-button active w3-text-blue">HOME</a>
             <a href="" class="w3-bar-item w3-button">DATA</a>
-            <a href="" class="w3-bar-item w3-button w3-blue">LOG IN</a>
+            <a href="" class="w3-bar-item w3-button w3-blue w3-round">ADMIN</a>
         </div>
     </div>
 </div>
@@ -18,45 +18,59 @@
             Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.
             Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment.
         </p><br>
-        <a href="#content" class="w3-button w3-blue">READ MORE <i class="fa fa-angle-double-right"></i></a>
-        <a href="#dataAll" class="w3-button w3-blue">VIEW OVERALL <i class="fa fa-angle-double-right"></i></a>
+        <a href="#content" class="w3-button w3-blue w3-round">READ MORE <i class="fa fa-angle-double-right"></i></a>
+        <a href="#dataAll" class="w3-button w3-blue w3-round">VIEW OVERALL <i class="fa fa-angle-double-right"></i></a>
     </div>
 </header>
 
 <div class="w3-content w3-padding" style="max-width: 1495px;">
     <div class="w3-container" id="dataAll">
-        <div class="w3-center w3-xxlarge w3-border-bottom" style="width: 1000px; margin: auto">
-            <h2 style="font-weight: 500;">OVERALL CASES</h2>
+        <div class="w3-center w3-xxlarge w3-border-bottom" style="width: 1300px; margin: auto">
+            <h2 style="font-weight: 700;">Overall Cases</h2>
         </div>
-        <div class="w3-row w3-margin-top w3-card-4 w3-margin-bottom" style="width: 1000px; margin:auto">
-            <div class="w3-quarter w3-light-blue 13 m6">
-                <h3 class="w3-center">Confirmed</h3>
-                <h1 class="w3-center"><?php echo $count->getAll() ?></h1>
-            </div>
 
-            <div class="w3-quarter w3-blue 13 m6">
-                <h3 class="w3-center">Recovered</h3>
-                <h1 class="w3-center"><?php echo $count->getRecovered() ?></h1>
-            </div>
+        <div class="w3-container" style="width: 1300px; margin:auto;">
+            <div class="w3-row">
+                <div class="w3-cell-row w3-blue w3-card-4 w3-text-white w3-round-large w3-margin-top w3-margin-bottom">
+                    <div class="w3-cell w3-container w3-cell-middle">
+                        <p class="w3-large tag" style="font-weight: 500; margin: 0;">Total Confirmed</p>
+                        <p class="w3-large tag" style="font-weight: 500; margin: 0;">Last Update : <b><?php echo $count->getDate(); ?></b> </p>
+                    </div>
+                    <div class="w3-cell w3-container w3-cell-middle">
+                        <p class="w3-xxlarge w3-right" style="margin-top: 20px; margin-bottom: 20px;"><?php echo $count->getAll(); ?></p>
+                    </div>
+                </div>
 
-            <div class="w3-quarter w3-teal 13 m6">
-                <h3 class="w3-center">Recovered</h3>
-                <h1 class="w3-center"><?php echo $count->getActive() ?></h1>
-            </div>
+                <div class="w3-teal 13 m6 w3-card-4 w3-third w3-round-large" style="width: 412px; margin-right: 15px">
+                    <div class="w3-cell-middle w3-container w3-padding">
+                        <p class="w3-large w3-center" style="font-weight: 500; margin: 0;">Recovered</p>
+                        <p class="w3-xxlarge w3-center" style="margin: 0;"><?php echo $count->getRecovered(); ?></p>
+                    </div>
+                </div>
 
-            <div class="w3-quarter w3-dark-grey 13 m6">
-                <h3 class="w3-center">Recovered</h3>
-                <h1 class="w3-center"><?php echo $count->getDeath() ?></h1>
+                <div class="w3-flat-belize-hole 13 m6 w3-card-4 w3-third w3-round-large" style="width: 412px; margin-right: 15px">
+                    <div class="w3-cell-middle w3-container w3-padding">
+                        <p class="w3-large w3-center" style="font-weight: 500; margin: 0;">Active</p>
+                        <p class="w3-xxlarge w3-center" style="margin: 0;"><?php echo $count->getActive(); ?></p>
+                    </div>
+                </div>
+
+                <div class="w3-dark-grey 13 m6 w3-card-4 w3-third w3-round-large" style="width: 412px;">
+                    <div class="w3-cell-middle w3-container w3-padding">
+                        <p class="w3-large w3-center" style="font-weight: 500; margin: 0;">Death</p>
+                        <p class="w3-xxlarge w3-center" style="margin: 0;"><?php echo $count->getDeath(); ?></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="w3-container" id="content">
+    <div class="w3-container w3-margin-top" id="content">
         <div class="w3-center w3-xxlarge w3-border-bottom">
-            <h2 style="font-weight: 500;">COVID-19 Response</h2>
+            <h2 style="font-weight: 700;">COVID-19 Response</h2>
         </div>
         <div class="w3-container paragraph">
-            <h3 class="w3-text-blue" style="font-weight: 500;">Korean government’s response system</h3>
+            <h3 class="w3-text-blue" style="font-weight: 700;">Korean government’s response system</h3>
             <p>
                 Since raising the country’s Crisis Alert Level to the highest (Level 4) in February 23, 2020,
                 the Korean government has assembled the Central Disaster and Safety Countermeasure Headquarters headed by the Prime Minister to bolster
@@ -81,7 +95,7 @@
             </p>
             <img src="view/img/content1.JPG" class="center">
 
-            <h3 class="w3-text-blue" style="font-weight: 500;">Preventing the inflow and spread of the virus</h3>
+            <h3 class="w3-text-blue" style="font-weight: 700;">Preventing the inflow and spread of the virus</h3>
             <h4><i class="fa fa-angle-right"></i> Preventing importation of the virus through border screening</h4>
             <h5><i class="fa fa-square-o"></i> Special Entry Procedure </h5>
             <p>
