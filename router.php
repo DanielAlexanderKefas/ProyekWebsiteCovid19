@@ -19,6 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST'){
     switch ($url) {
-
+        case $baseURL.'/verify-adm':
+            require_once "controller/loginAdminController.php";
+            $loginAdminController = new LoginAdminController();
+            echo $loginAdminController->loginAdmin();
+            break;
     }
 }   
