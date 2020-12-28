@@ -10,7 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $homeController = new HomeController();
             echo $homeController -> view_home();
             break;
-
+        case $baseURL.'/loginAdmin':
+            require_once "controller/loginAdminController.php";
+            $loginAdminController = new LoginAdminController();
+            echo $loginAdminController -> view_loginAdmin();
+            break;
     }
 
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST'){
