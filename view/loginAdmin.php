@@ -9,7 +9,9 @@
 </div>
 
 <div class="flex-container">
+
     <form class="login-form" method="post" action="verify-adm" style="width: 40%">
+
         <div style="display: flex; justify-content: center; width: 100%;">
             <h2 style="margin: 0px; font-weight: bold;">Admin Log In<h2>
         </div>

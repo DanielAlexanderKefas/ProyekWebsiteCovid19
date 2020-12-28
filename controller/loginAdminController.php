@@ -13,6 +13,7 @@ class LoginAdminController {
         $this->db = new MySQLDB("localhost", "root", "","covid_data");
     }
 
+
     public function view_loginAdmin() {
         return View::createView('loginAdmin.php', []);
     }
@@ -26,6 +27,7 @@ class LoginAdminController {
             $password = $_POST['passAdmin'];
 
             $query = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
+
             $result = $this->db->executeSelectQuery($query);
             if(count($result) > 0) {
                 echo "Login Success";

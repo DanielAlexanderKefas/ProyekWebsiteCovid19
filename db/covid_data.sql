@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
+
 CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
   `username` varchar(50) DEFAULT NULL,
@@ -40,6 +41,7 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`admin_id`, `username`, `password`) VALUES
 (1, 'admin', 'admin'),
 (2, 'testAdmin', 'test123');
+
 
 -- --------------------------------------------------------
 
