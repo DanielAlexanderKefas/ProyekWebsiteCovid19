@@ -13,27 +13,29 @@ class LoginAdminController {
         $this->db = new MySQLDB("localhost", "root", "","covid_data");
     }
 
-    public function view_loginAdmin(){
+    public function view_loginAdmin() {
         return View::createView('loginAdmin.php', []);
     }
 
-    public function loginAdmin(){
+    public function loginAdmin() {
         $username = "";
         $password = "";
 
-        if(isset($_POST['userAdmin']) && isset($_POST['passAdmin']) && $_POST['userAdmin'] != "" && $_POST['passAdmin'] != ""){
+        if(isset($_POST['userAdmin']) && isset($_POST['passAdmin']) && $_POST['userAdmin'] != "" && $_POST['passAdmin'] != "") {
             $username = $_POST['userAdmin'];
             $password = $_POST['passAdmin'];
 
             $query = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
-            $this->db->executeSelectQuery($query);
-            echo "Login Success";
-            Session::set('login', 'true');
-            return true;
-        } else {
-            echo "Login Failed";
-            Session::set('login', 'false');
-            return false;
+            $result = $this->db->executeSelectQuery($query);
+            if(count($result) > 0) {
+                echo "Login Success";
+                Session::set('login', 'true');
+                return true;
+            } else {
+                echo "Login Failed";
+                Session::set('login', 'false');
+                return false;
+            }
         }
     }
 }
