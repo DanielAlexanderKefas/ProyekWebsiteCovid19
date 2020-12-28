@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="view/style/style.css">
     <link rel="stylesheet" href="view/lib/w3.css">
+    <link rel="stylesheet" type="text/css" href="view/style/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
     <link rel="stylesheet" href="view/lib/font-awesome.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
         <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
         <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
         
-        <p>Go to <a href="login">Admin Page</a></p>
+        <p>Go to <a href="loginAdmin">Admin Page</a></p>
     </footer>
 
 </body>
