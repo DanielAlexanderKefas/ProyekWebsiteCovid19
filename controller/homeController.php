@@ -28,6 +28,7 @@ class HomeController{
         $queryDeath= "SELECT COUNT(patient_id) FROM patientinfo WHERE state = 'deceased'";
         $queryDate = "SELECT confirmed_date FROM patientinfo ORDER BY confirmed_date DESC LIMIT 1";
 
+
         $result_All = $this->db->executeSelectQuery($queryAll);
         $result_Rec = $this->db->executeSelectQuery($queryRecovered);
         $result_Act = $this->db->executeSelectQuery($queryActive);
@@ -37,6 +38,7 @@ class HomeController{
         print_r($result_Date);
 
         $count = new CountCase($result_All[0]['COUNT(patient_id)'], $result_Rec[0]['COUNT(patient_id)'], $result_Act[0]['COUNT(patient_id)'], $result_Death[0]['COUNT(patient_id)'], $result_Date[0]['confirmed_date']);
+
         return $count;
     }
 }
