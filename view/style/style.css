@@ -1,5 +1,51 @@
-/* Logo */
+
 .logo {
     height: auto;
     width: 300px;
+}
+
+.headerFont {
+    font-weight: 600;
+}
+
+.headerIMG {
+    filter: brightness(50%);
+}
+
+.paragraph {
+    text-align: justify;
+}
+
+.active {
+    font-weight: 600;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;   
+}
+
+p, span {
+    font-size: 16px;
+}
+
+.flex-container {
+    margin: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form {
+    border-radius: 40px;
+    padding: 5%;
+    box-shadow: 10;
+    box-shadow: 0px 0px 30px #888888;
+}
+
+.custom-login-btn {
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 20px;
 }

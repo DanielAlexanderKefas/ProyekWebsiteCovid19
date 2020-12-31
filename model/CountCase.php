@@ -5,13 +5,16 @@ class CountCase{
     protected $active;
     protected $death;
     protected $recovered;
+    protected $lastDate;
 
-    public function __construct($all, $recovered, $active, $death)
+    public function __construct($all, $recovered, $active, $death, $lastDate)
+
     {
         $this->all = $all;
         $this->active = $active;
         $this->death = $death;
         $this->recovered = $recovered;
+        $this->lastDate = $lastDate;
     }
 
     public function getAll(){
@@ -33,4 +36,8 @@ class CountCase{
         return $this->active;
     }
 
+    public function getDate()
+    {
+        return $this->lastDate;
+    }
 }
