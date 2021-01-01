@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<header class="w3-display-container w3-content" style="max-width:1495px;" id="home">
+<header class="w3-display-container w3-content" style="max-width:1495px; margin-top: 60px" id="home">
     <img class="w3-image headerIMG" src="view/img/header.jpg" width="1495" height="800">
     <div class="w3-display-middle w3-container w3-center">
         <h1 class="w3-text-white headerFont">COVID-19 INFORMATION CENTER</h1>
