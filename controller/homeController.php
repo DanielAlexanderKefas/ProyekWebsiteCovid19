@@ -29,6 +29,7 @@ class HomeController
         $queryDate = "SELECT date FROM timeprovince ORDER BY date DESC LIMIT 1";
 
 
+
         $result_All = $this->db->executeSelectQuery($queryAll);
         $result_Date = $this->db->executeSelectQuery($queryDate);
 
