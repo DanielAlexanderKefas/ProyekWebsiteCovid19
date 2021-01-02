@@ -103,125 +103,125 @@
 </div>
 
 <script>
-		window.onload = function() {
-			var ctx = document.getElementById("canvas").getContext("2d");
-			new Chart(ctx, myChart);
-		};
-		
-		var confirmed = [
-			<?php 
-				$num = 0;
-				foreach ($cases as $key => $row) {
-					if ($num != 0) echo ", ";
-					echo $row -> getAll();
-					$num++;
-				}
-			?>
-		];
-		
-		var recovered = [
-			<?php 
-				$num = 0;
-				foreach ($cases as $key => $row) {
-					if ($num != 0) echo ", ";
-					echo $row -> getRecovered();
-					$num++;
-				}
-			?>
-		];
-		
-		var active = [
-			<?php 
-				$num = 0;
-				foreach ($cases as $key => $row) {
-					if ($num != 0) echo ", ";
-					echo $row -> getActive();
-					$num++;
-				}
-			?>
-		];
-		
-		var death = [
-			<?php 
-				$num = 0;
-				foreach ($cases as $key => $row) {
-					if ($num != 0) echo ", ";
-					echo $row -> getDeath();
-					$num++;
-				}
-			?>
-		];
-		
-		var myChart = {
-			type: 'line',
-			data: {
-				datasets: [
-					{
-						label: "Confirmed",
-						borderColor: '#2196F3FF',
-						backgroundColor: '#FFFFFF00',
-						data: confirmed,
-						fill: true, 
-					},
-					{
-						label: "Recovered",
-						borderColor: '#009688FF',
-						backgroundColor: '#FFFFFF00',
-						data: recovered,
-						fill: true, 
-					},
-					{
-						label: "Active",
-						borderColor: '#2980B9FF',
-						backgroundColor: '#FFFFFF00',
-						data: active,
-						fill: true, 
-					},
-					{
-						label: "Death",
-						borderColor: '#616161FF',
-						backgroundColor: '#FFFFFF00',
-						data: death,
-						fill: true, 
-					}],
-				labels: [
-					<?php 
-					$num = 0;
-					foreach ($cases as $key => $row) {
-						if ($num != 0) echo ", ";
-						echo "'".$row -> getProvince()."'";
-						$num++;
-					}
-					?>
-				],
-			},	
-			options: {
-				scales: {
-					xAxes: [{
-						offset: true,
-						ticks: {
-							autoSkip: false
-						},
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Province',
-						}
-					}],
-					yAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Number of cases',
-						}
-					}]
-				},
-				title: {
-					display: true,
-					text:'Chart.js Line Chart'
-				},
-				
-				responsive: true
+	window.onload = function() {
+		var ctx = document.getElementById("canvas").getContext("2d");
+		new Chart(ctx, myChart);
+	};
+	
+	var confirmed = [
+		<?php 
+			$num = 0;
+			foreach ($cases as $key => $row) {
+				if ($num != 0) echo ", ";
+				echo $row -> getAll();
+				$num++;
 			}
-		};
-    </script>
+		?>
+	];
+	
+	var recovered = [
+		<?php 
+			$num = 0;
+			foreach ($cases as $key => $row) {
+				if ($num != 0) echo ", ";
+				echo $row -> getRecovered();
+				$num++;
+			}
+		?>
+	];
+	
+	var active = [
+		<?php 
+			$num = 0;
+			foreach ($cases as $key => $row) {
+				if ($num != 0) echo ", ";
+				echo $row -> getActive();
+				$num++;
+			}
+		?>
+	];
+	
+	var death = [
+		<?php 
+			$num = 0;
+			foreach ($cases as $key => $row) {
+				if ($num != 0) echo ", ";
+				echo $row -> getDeath();
+				$num++;
+			}
+		?>
+	];
+	
+	var myChart = {
+		type: 'line',
+		data: {
+			datasets: [
+				{
+					label: "Confirmed",
+					borderColor: '#2196F3FF',
+					backgroundColor: '#FFFFFF00',
+					data: confirmed,
+					fill: true, 
+				},
+				{
+					label: "Recovered",
+					borderColor: '#009688FF',
+					backgroundColor: '#FFFFFF00',
+					data: recovered,
+					fill: true, 
+				},
+				{
+					label: "Active",
+					borderColor: '#2980B9FF',
+					backgroundColor: '#FFFFFF00',
+					data: active,
+					fill: true, 
+				},
+				{
+					label: "Death",
+					borderColor: '#616161FF',
+					backgroundColor: '#FFFFFF00',
+					data: death,
+					fill: true, 
+				}],
+			labels: [
+				<?php 
+				$num = 0;
+				foreach ($cases as $key => $row) {
+					if ($num != 0) echo ", ";
+					echo "'".$row -> getProvince()."'";
+					$num++;
+				}
+				?>
+			],
+		},	
+		options: {
+			scales: {
+				xAxes: [{
+					offset: true,
+					ticks: {
+						autoSkip: false
+					},
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Province',
+					}
+				}],
+				yAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Number of cases',
+					}
+				}]
+			},
+			title: {
+				display: true,
+				text:'Chart.js Line Chart'
+			},
+			
+			responsive: true
+		}
+	};
+</script>
