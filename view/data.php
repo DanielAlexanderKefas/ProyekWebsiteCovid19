@@ -52,6 +52,7 @@
     </div>
 
     <div class="w3-container w3-margin-top" id="stats" style="width: 1300px; margin: auto">
+
         <div class="w3-center w3-xxlarge w3-border-bottom">
             <h2 style="font-weight: 700;">Statistics</h2>
         </div>
@@ -75,6 +76,7 @@
 			<canvas id="canvas" style="max-width: 1300px; height: 500px; margin: auto"></canvas>
 		</div>
 		
+
         <div class="w3-container" style="margin-top: 32px; margin-bottom: 24px">
             <table class="w3-table w3-bordered" style="width: 1000px; margin: auto">
 				<tr>
