@@ -84,7 +84,7 @@ class DataController{
 		
 		$cases = [];
 		foreach ($query_result as $key => $result) {
-			$cases[] = new DetailCase($result['confirmed'], $result['active'], $result['deceased'], $result['released'], $result['province']);
+			$cases[] = new DetailCase($result['confirmed'], $result['released'], $result['active'], $result['deceased'], $result['province']);
 		}
         return $cases;
 	}
@@ -96,7 +96,7 @@ class DataController{
 		
 		$cases = [];
 		foreach ($query_result as $key => $result) {
-			$cases[] = new DetailCase($result['confirmed'], $result['active'], $result['deceased'], $result['released'], $result['province']);
+			$cases[] = new DetailCase($result['confirmed'], $result['released'], $result['active'], $result['deceased'], $result['province']);
 		}
         return $cases;
 	}
