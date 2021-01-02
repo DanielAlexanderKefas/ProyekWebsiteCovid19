@@ -29,10 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $loginAdminController = new LoginAdminController();
             echo $loginAdminController->loginAdmin();
             break;
-		case $baseURL.'/data-filter':
+		    case $baseURL.'/data-filter':
             require_once "controller/dataController.php";
             $dataController = new DataController();
             echo $dataController -> view_data();
             break;
+
     }
 }   
