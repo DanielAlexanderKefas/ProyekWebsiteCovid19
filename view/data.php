@@ -91,8 +91,8 @@
 						echo "<tr>";
 						echo "<td style='width: 40%'>".$row -> getProvince()."</td>";
 						echo "<td class='w3-center'>".$row -> getAll()."</td>";
-						echo "<td class='w3-center'>".$row -> getActive()."</td>";
 						echo "<td class='w3-center'>".$row -> getRecovered()."</td>";
+						echo "<td class='w3-center'>".$row -> getActive()."</td>";
 						echo "<td class='w3-center'>".$row -> getDeath()."</td>";
 						echo "</tr>";
 					}
