@@ -11,10 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+	<script src="view/lib/Chart.bundle.js"></script>
+    <script src="view/lib/utils.js"></script>
     <style>
         body, h1, h2, h3, h4, h5, h6, p {
             font-family: 'Quicksand', sans-serif;
         }
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
     </style>
 </head>
 
@@ -27,6 +34,7 @@
         
         <p>Go to <a href="loginAdmin">Admin Page</a></p>
     </footer>
+
 
 </body>
 

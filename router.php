@@ -10,6 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $homeController = new HomeController();
             echo $homeController -> view_home();
             break;
+		case $baseURL.'/data':
+            require_once "controller/dataController.php";
+            $dataController = new DataController();
+            echo $dataController -> view_data();
+            break;
         case $baseURL.'/loginAdmin':
             require_once "controller/loginAdminController.php";
             $loginAdminController = new LoginAdminController();
@@ -24,5 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $loginAdminController = new LoginAdminController();
             echo $loginAdminController->loginAdmin();
             break;
+		    case $baseURL.'/data-filter':
+            require_once "controller/dataController.php";
+            $dataController = new DataController();
+            echo $dataController -> view_data();
+            break;
+
     }
 }   
