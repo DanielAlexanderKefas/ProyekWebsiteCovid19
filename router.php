@@ -20,6 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $loginAdminController = new LoginAdminController();
             echo $loginAdminController -> view_loginAdmin();
             break;
+        case $baseURL . '/editAdmin':
+            require_once "controller/editAdminController.php";
+            $editADminController = new EditAdminController();
+            echo $editADminController->view_editadmin();
+            break;
+        case $baseURL . '/logoutAdmin':
+            require_once "controller/loginAdminController.php";
+            $loginAdminController = new LoginAdminController();
+            $loginAdminController->logoutAdmin();
+            header('Location: loginAdmin');
+            break;
     }
 
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -28,12 +39,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             require_once "controller/loginAdminController.php";
             $loginAdminController = new LoginAdminController();
             echo $loginAdminController->loginAdmin();
+            header('Location: editAdmin');
             break;
-		    case $baseURL.'/data-filter':
+        case $baseURL.'/data-filter':
             require_once "controller/dataController.php";
             $dataController = new DataController();
             echo $dataController -> view_data();
             break;
-
+        case $baseURL . '/input-data':
+            require_once "controller/editAdminController.php";
+            $editADminController = new EditAdminController();
+            echo $editADminController -> addData();
+            header('Location: editAdmin');
+            break;
     }
 }   
