@@ -40,4 +40,9 @@ class LoginAdminController {
             }
         }
     }
+
+    public function logoutAdmin(){
+        session_unset();
+        session_destroy();
+    }
 }
