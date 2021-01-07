@@ -25,16 +25,30 @@ class HomeController
 
     public function getCountData()
     {
-        $queryAll = "SELECT SUM(confirmed) AS confirmed, SUM(released) AS released, SUM(deceased) AS deceased FROM `timeprovince`";
-        $queryDate = "SELECT date FROM timeprovince ORDER BY date DESC LIMIT 1";
+        $queryAll = "SELECT SUM(a.confirmed) AS confirmed, SUM(a.released) AS released, SUM(a.deceased) AS deceased, a.max_date
+        FROM (
+            SELECT
+              t.province,
+              SUM(confirmed) AS confirmed, SUM(released) AS released, SUM(deceased) AS deceased,
+              max_date
+            FROM
+              `timeprovince` t
+              JOIN (
+                SELECT 
+                  province,
+                  MAX(date) AS max_date
+                FROM `timeprovince`
+                GROUP BY province
+              ) name_dates
+                ON t.province = name_dates.province AND t.date = max_date
+            GROUP BY t.province, max_date ) a";
 
 
 
         $result_All = $this->db->executeSelectQuery($queryAll);
-        $result_Date = $this->db->executeSelectQuery($queryDate);
 
         $activeCase = $result_All[0]['confirmed'] - $result_All[0]['deceased'] - $result_All[0]['released'];
-        $count = new CountCase($result_All[0]['confirmed'], $result_All[0]['released'], $activeCase, $result_All[0]['deceased'], $result_Date[0]['date']);
+        $count = new CountCase($result_All[0]['confirmed'], $result_All[0]['released'], $activeCase, $result_All[0]['deceased'], $result_All[0]['max_date']);
 
 
         return $count;
