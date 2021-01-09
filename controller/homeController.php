@@ -43,8 +43,6 @@ class HomeController
                 ON t.province = name_dates.province AND t.date = max_date
             GROUP BY t.province, max_date ) a";
 
-
-
         $result_All = $this->db->executeSelectQuery($queryAll);
 
         $activeCase = $result_All[0]['confirmed'] - $result_All[0]['deceased'] - $result_All[0]['released'];
