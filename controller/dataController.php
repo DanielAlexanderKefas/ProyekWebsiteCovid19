@@ -5,6 +5,7 @@ require_once "service/view.php";
 require_once "service/session.php";
 require_once "model/CountCase.php";
 require_once "model/DetailCase.php";
+require_once "model/FilteredCase.php";
 require_once "model/Provinces.php";
 
 class DataController{
@@ -27,17 +28,34 @@ class DataController{
 			$start = $_POST['start-date'];
 			$end = $_POST['end-date'];
 			
-			$cases = $this -> getTimeCasesFiltered($province, $start, $end);
+			$filteredcases = $this -> getTimeCasesFiltered($province, $start, $end);
+			$provincetotal = $this -> getProvinceCasesFiltered($province, $start, $end);
 		}
 		else $cases = $this -> getTimeCases();
 		
         if(isset($count)){
-            return View::createView('data.php', [
-				"firstCase" => $firstCase,
-				"provinces" => $provinces,
-				"count" => $count,
-				"cases" => $cases
-			]);
+			if (isset($filter)) {
+				return View::createView('data.php', [
+					"firstCase" => $firstCase,
+					"provinces" => $provinces,
+					"count" => $count,
+					"cases" => $filteredcases,
+					"provincetotal" => $provincetotal,
+					"filter" => $filter,
+					"province" => $province,
+					"start" => $start,
+					"end" => $end
+				]);
+			}
+			else {
+				return View::createView('data.php', [
+					"firstCase" => $firstCase,
+					"provinces" => $provinces,
+					"count" => $count,
+					"cases" => $cases,
+					"filter" => $filter
+				]);
+			}
         }
     }
 
@@ -120,14 +138,24 @@ class DataController{
 	}
 	
 	public function getTimeCasesFiltered($province, $start, $end) {
-		$queryCases = "SELECT date, province, SUM(confirmed) as 'confirmed', (SUM(confirmed) - SUM(released) - SUM(deceased)) AS 'active', SUM(deceased) as 'deceased', SUM(released) as 'released' FROM timeprovince WHERE province = '$province' AND date BETWEEN '$start' AND '$end' GROUP BY province ORDER BY date ASC, province ASC";
+		$queryCases = "SELECT confirmed, released, (confirmed - deceased - released) AS active, deceased, date FROM `timeprovince` WHERE province = '$province' AND date BETWEEN '$start' AND '$end' ORDER BY date ASC";
 		
 		$query_result = $this -> db -> executeSelectQuery($queryCases);
 		
 		$cases = [];
 		foreach ($query_result as $key => $result) {
-			$cases[] = new DetailCase($result['confirmed'], $result['released'], $result['active'], $result['deceased'], $result['province']);
+			$cases[] = new FilteredCase($result['confirmed'], $result['released'], $result['active'], $result['deceased'], $result['date']);
 		}
+        return $cases;
+	}
+	
+	public function getProvinceCasesFiltered($province, $start, $end) {
+		$queryCases = "SELECT MAX(confirmed) AS confirmed, MAX(released) AS released, (MAX(confirmed) - MAX(deceased) - MAX(released)) AS active, MAX(deceased) AS deceased, province FROM `timeprovince` WHERE province = '$province' AND date BETWEEN '$start' AND '$end'";
+		
+		$query_result = $this -> db -> executeSelectQuery($queryCases);
+		
+		$cases = new DetailCase($query_result[0]['confirmed'], $query_result[0]['released'], $query_result[0]['active'], $query_result[0]['deceased'], $query_result[0]['province']);
+		
         return $cases;
 	}
 }

@@ -62,12 +62,18 @@
 				<select name="province" id="form-filter" style="height: 28px; margin-right: 16px">
 					<?php
 						foreach ($provinces as $key => $row) {
-							echo "<option value=".strtolower($row -> getProvince()).">".$row -> getProvince()."</option>";
+							echo "<option value='".strtolower($row -> getProvince())."'";
+							if (isset($filter)) {
+								if (strcasecmp($row -> getProvince(), $province) == 0) {
+									echo " selected";
+								}
+							}
+							echo ">".$row -> getProvince()."</option>";
 						}
 					?>
 				</select>
-				<input type="date" name="start-date" value="<?php echo $firstCase; ?>" min="<?php echo $firstCase; ?>" style="height: 28px; margin-right: 16px">
-				<input type="date" name="end-date" value="<?php echo date("Y-m-d"); ?>" max="<?php echo date("Y-m-d"); ?>" style="height: 28px; margin-right: 16px">
+				<input type="date" name="start-date" value="<?php echo (isset($filter))? $start : $firstCase;?>" min="<?php echo $firstCase; ?>" style="height: 28px; margin-right: 16px">
+				<input type="date" name="end-date" value="<?php echo (isset($filter))? $end : date("Y-m-d");?>" max="<?php echo date("Y-m-d"); ?>" style="height: 28px; margin-right: 16px">
 				<input type="submit" name="filter" value="Filter" class="w3-flat-belize-hole w3-border-0" style="height: 28px">
 			</form>
 		</div>
@@ -87,13 +93,24 @@
 					<th class="w3-center">Death</th>
 				</tr>
 				<?php 
-					foreach ($cases as $key => $row) {
+					if (!isset($filter)) {
+						foreach ($cases as $key => $row) {
+							echo "<tr>";
+							echo "<td style='width: 40%'>".$row -> getProvince()."</td>";
+							echo "<td class='w3-center'>".$row -> getAll()."</td>";
+							echo "<td class='w3-center'>".$row -> getRecovered()."</td>";
+							echo "<td class='w3-center'>".$row -> getActive()."</td>";
+							echo "<td class='w3-center'>".$row -> getDeath()."</td>";
+							echo "</tr>";
+						}
+					}
+					else {
 						echo "<tr>";
-						echo "<td style='width: 40%'>".$row -> getProvince()."</td>";
-						echo "<td class='w3-center'>".$row -> getAll()."</td>";
-						echo "<td class='w3-center'>".$row -> getRecovered()."</td>";
-						echo "<td class='w3-center'>".$row -> getActive()."</td>";
-						echo "<td class='w3-center'>".$row -> getDeath()."</td>";
+						echo "<td style='width: 40%'>".$provincetotal -> getProvince()."</td>";
+						echo "<td class='w3-center'>".$provincetotal -> getAll()."</td>";
+						echo "<td class='w3-center'>".$provincetotal -> getRecovered()."</td>";
+						echo "<td class='w3-center'>".$provincetotal -> getActive()."</td>";
+						echo "<td class='w3-center'>".$provincetotal -> getDeath()."</td>";
 						echo "</tr>";
 					}
 				?>
@@ -120,7 +137,7 @@
 	];
 	
 	var recovered = [
-		<?php 
+		<?php 			
 			$num = 0;
 			foreach ($cases as $key => $row) {
 				if ($num != 0) echo ", ";
@@ -186,12 +203,22 @@
 				}],
 			labels: [
 				<?php 
-				$num = 0;
-				foreach ($cases as $key => $row) {
-					if ($num != 0) echo ", ";
-					echo "'".$row -> getProvince()."'";
-					$num++;
-				}
+					if (!isset($filter)) {
+						$num = 0;
+						foreach ($cases as $key => $row) {
+							if ($num != 0) echo ", ";
+							echo "'".$row -> getProvince()."'";
+							$num++;
+						}
+					}
+					else {
+						$num = 0;
+						foreach ($cases as $key => $row) {
+							if ($num != 0) echo ", ";
+							echo "'".$row -> getCaseDate()."'";
+							$num++;
+						}
+					}
 				?>
 			],
 		},	
@@ -199,20 +226,30 @@
 			scales: {
 				xAxes: [{
 					offset: true,
-					ticks: {
-						autoSkip: false
+					ticks: {						
+						<?php
+							if (!isset($filter)) {
+								echo "autoSkip: false";
+							}
+							else echo "autoSkip: true";
+						?>
 					},
 					display: true,
 					scaleLabel: {
 						display: true,
-						labelString: 'Province',
+						<?php
+							if (!isset($filter)) {
+								echo "labelString: 'Province'";
+							}
+							else echo "labelString: 'Date'";
+						?>
 					}
 				}],
 				yAxes: [{
 					display: true,
 					scaleLabel: {
 						display: true,
-						labelString: 'Number of cases',
+						labelString: 'Number of cases'
 					}
 				}]
 			},
