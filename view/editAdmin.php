@@ -23,8 +23,8 @@
     </div>
 </div>
 
-<div class="w3-content w3-padding" style="max-width: 1825px; margin-top: 5%;">
-    <div class="w3-xxlarge w3-border-bottom" style="width: 1755px; margin: auto">
+<div class="w3-content w3-padding" style="max-width: 1500px; margin-top: 5%;">
+    <div class="w3-xxlarge w3-border-bottom" style="width: 1455px; margin: auto">
         <h2>Welcome to Admin Page</h2>
     </div>
 
@@ -71,7 +71,7 @@
         </form>
     </div>
 
-    <div class="w3-container w3-margin-top" style="width: 1755px; margin: auto">
+    <div class="w3-container w3-margin-top" style="width: 1400px; margin: auto">
         <table class="w3-table w3-bordered">
             <tr>
                 <th class="w3-center">Date</th>
